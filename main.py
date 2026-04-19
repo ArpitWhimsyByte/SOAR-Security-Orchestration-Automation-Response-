@@ -240,7 +240,9 @@ def ingest_alert(payload: AlertInput) -> AlertOutput:
         reason=list(decision["reasons"]),  # explainability
         blocked_ips=blocked_ips,
     )
-
+@app.get("/")
+def root():
+    return {"message": "SOAR backend is live 🚀"}
 
 @app.get("/blocked-ips", response_model=List[str])
 def get_blocked_ips() -> List[str]:
